@@ -18,8 +18,8 @@ export class Group_controller
     }
     get_joined_groups(name:string) {
         var result = new Array();
-        var id = -1;
-        var i = 0;
+        let id = -1;
+        let i = 0;
 
         this.group_list.forEach(item => {
             id = item.get_user_id_from_name(name);

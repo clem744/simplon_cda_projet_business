@@ -23,7 +23,7 @@ export class Group
         console.log(user + " fait maintenant parti du groupe " + this.name + " !");
     }
     addExpense(user:string, message:string, cost:number) {
-        var id = this.get_user_id_from_name(user);
+        let id = this.get_user_id_from_name(user);
 
         if (id == -1)
             return;
@@ -35,8 +35,9 @@ export class Group
         console.log(user + " à dépenser " + String(cost) + "€ pour " + message);
     }
     deleteExpense(id:number) {
-        var id_user = this.get_user_id_from_name(this.expense_list[id].user);
-        var expense = this.expense_list[id];
+        let id_user = this.get_user_id_from_name(this.expense_list[id].user);
+        let expense = this.expense_list[id];
+        
         this.user_expense_list[id_user] -= this.expense_list[id].cost;
         this.expense_list = this.expense_list.filter(item => item.id != id);
         this.expense_number--;
@@ -44,7 +45,7 @@ export class Group
     }
     get_user_id_from_name(name:string)
     {
-        for(var i = 0; i < this.user_number; i++) {
+        for(let i = 0; i < this.user_number; i++) {
             if (this.user_list[i] == name) {
                 return (i);
             }
@@ -55,15 +56,15 @@ export class Group
     {
         var expenses_recap = new Array();
 
-        for(var i = 0; i < this.user_number; i++) {
+        for(let i = 0; i < this.user_number; i++) {
             expenses_recap[i] = this.user_expense_list[i];
         }
-        for(var i = 0; i < this.expense_number; i++) {
-            for(var j = 0; j < this.user_number; j++) {
+        for(let i = 0; i < this.expense_number; i++) {
+            for(let j = 0; j < this.user_number; j++) {
                 expenses_recap[j] -= this.expense_list[i].cost/this.user_number;
             }
         }
-        for(var i = 0; i < this.user_number; i++) {
+        for(let i = 0; i < this.user_number; i++) {
             expenses_recap[i] = Math.round(expenses_recap[i] * 100) / 100;
             if (expenses_recap[i] == 0)
                 console.log(this.user_list + " est au point");
@@ -77,9 +78,9 @@ export class Group
     settle_group_balance()
     {
         this.user_expense_list = this.get_group_balance();
-        for(var i = 0; i < this.user_number; i++) {
+        for(let i = 0; i < this.user_number; i++) {
             if (this.user_expense_list[i] > 0) {
-                for(var j = 0; j < this.user_number; j++) {
+                for(let j = 0; j < this.user_number; j++) {
                     if (this.user_expense_list[i] == 0)
                         break;
                     if (this.user_expense_list[j] < 0) {
