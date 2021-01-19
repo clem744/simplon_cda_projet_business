@@ -1,24 +1,39 @@
-# New Project
+# Simplon, CDA, project business
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+### use `npm start` to launch the project
 
-## Available Scripts
+## Sujet
 
-### npm start
+## projet-business
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+L'objectif pédagogique de ce projet est de créer une application en portant une attention particulière sur la couche 
+business.
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+### Contexte
 
-### npm run build
+Nous souhaitons réaliser une application permettant à des groupes de personnes d'enregistrer leurs dépenses 
+(dans le cadre d'un voyage, d'une sortie ou autre) afin de pouvoir indiquer au terme de l'activité qui doit combien 
+à qui afin que tout le monde ait dépensé la même chose.
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
+Voilà le diagramme de use case pour une première version de l'appli.
 
-**For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/snowpackjs/snowpack/tree/main/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.json` config file.
+![Diagramme de use case](./projet-archi-usecase.png)
 
-### Q: What about Eject?
+Une personne pourra créer un groupe et inviter d'autres personnes via un lien d'invitation. A partir de là, 
+les différents membres du groupe pourront ajouter des dépenses et voir le total actuel de celles ci (et une estimation 
+de la fraction que chaque membre devra payer).
 
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+Une fois l'activité terminé, on passe le group en mode faire le compte (Settle group), ce qui affichera pour chaque 
+membre la somme qu'ielle devra verser à celleux ayant fait d'avantage de dépense et permettra à ces membres en question 
+de valider le remboursement lorsqu'un membre lui règle sa part.
+
+
+### Mise en oeuvre
+
+Vous allez vous concentrer uniquement sur la partie API Rest (pas de front pour ce projet, sauf si vous avez très très envie).
+Comme dit l'idée sera de faire à terme une couche Business (voir Domain) qui contiendra toutes les règles métiers de l'application et si elle peut être complètement découplée de l'infrastructure, c'est chouette.
+
+Pas la peine de gérer la partie authentification sur ce projet.
+
+Pas de restriction de langage/framework/ORM pour ce projet (sachant que si vous voulez faire les choses bien ceci dit, 
+le fait d'utiliser certains framework en gardant la couche Business/Domain découplée demandera certaines adaptations)
