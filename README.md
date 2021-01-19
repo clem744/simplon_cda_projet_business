@@ -2,6 +2,23 @@
 
 ### use `npm start` to launch the project
 
+#### Fait
+
+Create a group        
+Join a group				
+Display joined group
+Add expense	
+Cancel expense
+Display group with balance
+Settle group
+
+#### A faire
+
+validate group member refund
+generate group invite link
+
+Il reste la database a gerer
+Le front n'étant pas a faire, la partie view du projet est gérer par des console.log redirigé sur la page via du HTML
 ## Sujet
 
 ## projet-business
