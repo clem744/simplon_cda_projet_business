@@ -1,19 +1,20 @@
 import { Group } from "../model/Group"
+import { GroupBusiness } from "../model/GroupBusiness"
 
 export class Group_controller
 {
-    public group_list:Array<Group>;
+    public groups:Array<GroupBusiness>;
     private nb_group = 0;
     constructor() {
-        this.group_list = new Array();
+        this.groups = new Array();
     }
     create_group(creator:string, name:string) {
         console.log("Creation du groupe...");
-        this.group_list[this.nb_group] = new Group(creator, name);
+        this.groups[this.nb_group] = new GroupBusiness(new Group(creator, name));
         this.nb_group++;
     }
     add_group(group:Group) {
-        this.group_list[this.nb_group] = group;
+        this.groups[this.nb_group] = new GroupBusiness(group);
         this.nb_group++;
     }
     get_joined_groups(name:string) {
@@ -21,10 +22,10 @@ export class Group_controller
         let id = -1;
         let i = 0;
 
-        this.group_list.forEach(item => {
-            id = item.get_user_id_from_name(name);
+        this.groups.forEach(item => {
+            id = item.group.get_user_id_from_name(name);
             if (id != -1) {
-                console.log(name + " fait parti du groupe " + item.name);
+                console.log(name + " fait parti du groupe " + item.group.name);
                 result[i] = item;
                 i++;
             }
