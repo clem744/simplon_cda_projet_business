@@ -12,6 +12,7 @@ export class Group_controller
         console.log("Creation du groupe...");
         this.groups[this.nb_group] = new GroupBusiness(new Group(creator, name));
         this.nb_group++;
+        console.log(creator + " à creer le groupe " + name);
     }
     add_group(group:Group) {
         this.groups[this.nb_group] = new GroupBusiness(group);

@@ -6,9 +6,24 @@ export class GroupBusiness
 
     addUser(name:string) {
         this.group.addUser(name);
+        if (name != this.group.creator)
+            console.log(name + " fait maintenant parti du groupe " + this.group.name + " !");
     }
     addExpense(user:string, note:string, cost:number) {
-        this.group.addExpense(user, note, cost);
+        if (this.group.get_user_id_from_name(user) != -1) {
+            this.group.addExpense(user, note, cost);
+            console.log(user + " à dépenser " + String(cost) + "€ pour " + note);
+        }
+        else
+            console.log("Il n'y a pas d'uttilisateur " + user + " dans le groupe " + this.group.name);
+    }
+    deleteExpense(id:number) {
+        const expense = this.group.expense_list[id];
+
+        if (id < this.group.expense_number) {
+            this.group.deleteExpense(id);
+            console.log(expense.user + " à annulé son achat de " + expense.note + ", " + String(expense.cost) + "€ de moins a payer.");
+        }
     }
     get_group_balance()
     {
@@ -56,5 +71,5 @@ export class GroupBusiness
                 }
             }
         }
-    }   
+    }
 }
